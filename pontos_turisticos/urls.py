@@ -12,10 +12,21 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+    router register recebe pontoturistoViewSet como parametro
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from rest_framework import routers
+from core.api.viewsets import PontoTuristicoViewSet
 
+#registro de url por dentro das rotas
+#django vai tratar e criar sub urls /id /parametro /delete encapsulado dentro do register do Django Rest Framework
+router = routers.DefaultRouter()
+router.register(r'pontoturistico', PontoTuristicoViewSet)
+
+#começa em um url '' e manda por router passando as rotas criadas acima por url
 urlpatterns = [
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
 ]
