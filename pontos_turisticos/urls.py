@@ -24,6 +24,7 @@ from core.api.viewsets import PontoTuristicoViewSet
 #django vai tratar e criar sub urls /id /parametro /delete encapsulado dentro do register do Django Rest Framework
 router = routers.DefaultRouter()
 router.register(r'pontoturistico', PontoTuristicoViewSet)
+router.register(r'atracoes', AtracoesViewSet)
 
 #começa em um url '' e manda por router passando as rotas criadas acima por url
 urlpatterns = [
